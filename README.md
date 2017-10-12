@@ -20,21 +20,25 @@ Visualizations:
 ![decision tree ](https://i.imgur.com/tTbVq5O.png)
 <br> 
 
-**K-Means**
+
+**K-Means:**
  ![K-Means](https://i.imgur.com/BmTrMSw.png)
 <br>
 
-**Gaussian mixture model**
+
+**Gaussian mixture model:**
 <br>
 ![Gaussian mixture model ](https://i.imgur.com/FyiuJEO.png)
 <br>
 
-**Principal component analysis**
+
+**Principal component analysis:**
 <br>
 ![Gaussian mixture model ](https://i.imgur.com/5LsT9dX.png)
 <br>
 
-**Fastmap**
+
+**Fastmap:**
 <br>
 ![Fastmap ](https://i.imgur.com/RX65FLO.png)
 <br>
