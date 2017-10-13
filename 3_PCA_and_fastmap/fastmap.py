@@ -3,14 +3,18 @@ import random
 import matplotlib.pyplot as plt
 import numpy as np
 
-# set precision
+# for display readability
 np.set_printoptions(precision=3)
 
 
 def get_dis_matrix(fname='fastmap-data.txt'):
     """
-        return a numpy array for distance,
+        given fname, return a numpy array for distance,
         array[i][j] will return distance between point i and j
+        
+        TODOS:
+        should have make it a 10 by 2 matrix, or using (x,y) tuple as key,
+        too much space complexity sacrificed for readability. 
     """
     distance_matrix = np.zeros((11, 11))  # init a 11 by 11 matrix to fill
 
@@ -25,7 +29,7 @@ def get_dis_matrix(fname='fastmap-data.txt'):
 
 def get_furthest_point(matrix, point):
     """
-        given a matrix, a point, return its furthest pair of point
+        given a matrix, a point, return its furthest pair of point with smallest id
         O(n) runtime
     """
     # furthest_p = -1
@@ -39,7 +43,8 @@ def get_furthest_point(matrix, point):
 def get_far_pair(dis_matrix):
     """
         use a random point, find its furthest pair, and then, find furthest pair for that point
-        return the final pair and distance
+        return the final pair and distance.
+        a good heuristic to find a far pair with O(n) runtime instead of finding fariest pari with O(n^2)
     """
     rand_p = random.randint(1, 10)
 
@@ -47,7 +52,7 @@ def get_far_pair(dis_matrix):
     furthest_p1 = get_furthest_point(dis_matrix, rand_p)
     furthest_p2 = get_furthest_point(dis_matrix, furthest_p1)
 
-    for i in range(3):  # run 3 more times to make sure we get the fairest pair
+    for i in range(3):  # run 3 more times to make sure we get a pair far enough.
         furthest_p1 = get_furthest_point(dis_matrix, furthest_p2)
         furthest_p2 = get_furthest_point(dis_matrix, furthest_p1)
 
@@ -75,14 +80,14 @@ def fastmap(dist_matrix, dim=2):
     result_matrix = np.zeros((11, 2))
 
     while dim > 0:
-        # identify the far pair and distance by heuristic
+        # identify the far pair and its distance by heuristic
         piv_a, piv_b, piv_dist = get_far_pair(dist_matrix)
 
         if dis_matrix[piv_a][piv_b] == 0:
             print('dist between two far pivots are zero')
             result_matrix[:, 2 - dim] = 0.0
         else:
-            # find projected distance Xi for each data point
+            # find projected distance Xi for each data point on line(Piv_a, Piv_b)
             num_list = [num for num in range(1, 11)]
             for num in num_list:
                 proj_dist = get_projected_dist(num, piv_a, piv_b, dist_matrix)
