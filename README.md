@@ -13,6 +13,8 @@ Algorithms implemented
   - **[Pocket Algorithm](https://work.caltech.edu/library/032.html)**
   - **[Linear Regression](https://en.wikipedia.org/wiki/Linear_regression)**
   - **[Logistic Regression](https://en.wikipedia.org/wiki/Logistic_regression)**
+  - **[Back Propagation Neural Networks](https://en.wikipedia.org/wiki/Backpropagation)**
+
   - to be continued :coffee:
     
   <br>
